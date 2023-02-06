@@ -13,21 +13,18 @@ public class RootHttpHandler implements HttpHandler {
 
         // Initialize Response Body
         OutputStream respBody = exchange.getResponseBody();
-        System.out.println(exchange.getRequestURI().getPath());
         try {
-            // Write Response Body
-            File file = new File(getClass().getClassLoader().getResource("static/web/index.html").getFile());
-
+            byte[] file = getClass().getClassLoader().getResourceAsStream("static/web/index.html").readAllBytes();
 
             // Set Response Headers
             Headers headers = exchange.getResponseHeaders();
             headers.add("Content-Type", "text/html;charset=UTF-8");
-            headers.add("Content-Length", String.valueOf(file.length()));
+            headers.add("Content-Length", String.valueOf(file.length));
 
             // Send Response Headers
-            exchange.sendResponseHeaders(200, file.length());
+            exchange.sendResponseHeaders(200, file.length);
 
-            respBody.write(Files.readAllBytes(file.toPath()));
+            respBody.write(file);
 
             // Close Stream
             respBody.close();
