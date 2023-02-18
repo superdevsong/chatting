@@ -20,7 +20,7 @@ public class ResourceHttpHandler implements HttpHandler {
 
             // Set Response Headers
             Headers headers = exchange.getResponseHeaders();
-            headers.add("Content-Type", "text/html;charset=UTF-8");
+            headers.add("Content-Type", String.format("text/%s;",path.substring(path.lastIndexOf(".")+1)));
             headers.add("Content-Length", String.valueOf(file.length));
 
             // Send Response Headers
