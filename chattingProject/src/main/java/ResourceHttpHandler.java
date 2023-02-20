@@ -15,15 +15,18 @@ public class ResourceHttpHandler implements HttpHandler {
 
         try {
             String path = exchange.getRequestURI().getPath();
-            File file = new File(getClass().getClassLoader().getResource("static"+ path).getFile());
 
+            byte[] file = getClass().getClassLoader().getResourceAsStream("static"+ path).readAllBytes();
+
+            // Set Response Headers
             Headers headers = exchange.getResponseHeaders();
             headers.add("Content-Type", String.format("text/%s;",path.substring(path.lastIndexOf(".")+1)));
-            headers.add("Content-Length", String.valueOf(file.length()));
+            headers.add("Content-Length", String.valueOf(file.length));
 
-            exchange.sendResponseHeaders(200, file.length());
+            // Send Response Headers
+            exchange.sendResponseHeaders(200, file.length);
 
-            respBody.write(Files.readAllBytes(file.toPath()));
+            respBody.write(file);
 
             respBody.close();
 
