@@ -1,3 +1,8 @@
+package com.chatting.http;
+
+import com.chatting.http.handler.SignHttpHandler;
+import com.chatting.http.handler.ResourceHttpHandler;
+import com.chatting.http.handler.RootHttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -27,7 +32,7 @@ public class HttpServerManager {
         this.server = HttpServer.create(new InetSocketAddress(port), 0);
         this.server.createContext("/main", new RootHttpHandler());
         this.server.createContext("/web", new ResourceHttpHandler());
-
+        this.server.createContext("/sign", new SignHttpHandler());
     }
 
     public void start() {
@@ -35,8 +40,10 @@ public class HttpServerManager {
             this.server.start();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException {
+
         HttpServerManager serverManager = new HttpServerManager();
+        Class.forName("com.chatting.dao.JdbcConnector");
         System.out.println("start");
         serverManager.start();
     }
