@@ -1,0 +1,23 @@
+.wrap{position:absolute; left:50%; top:50%; width:400px; height:800px; transform:translate(-50%,-50%); padding:40px; border-radius:40px; box-sizing:border-box; background:#785efb; box-shadow:0 15px 30px -15px rgb(0,0,0,.40); text-align:center; opacity:0; margin-top:-100px;}
+.wrap .main{margin-top:-8px; font-size:48px; line-height:1em; font-weight:500;}
+.wrap .txt_box{position:relative; width:100%; margin-top:60px;}
+.wrap .txt_box input{position:relative; width:100%; height:50px; padding:21px 20px 0 20px; font-size:16px; border:none; border-radius:25px; box-sizing:border-box; color:#eee; background:#4c35c5;}
+.wrap .txt_box input:focus{background:#5d46d6;}
+.wrap .txt_box input:focus+label,
+.wrap .txt_box input:valid+label{transform:scale(.74); margin-top:-18px; transform-origin:top left;}
+.wrap .txt_box label{position:absolute; left:20px; top:50%; transform:translateY(-50%); margin-top:-2px; font-size:16px; transition:all 250ms ease-out;}
+.wrap .txtID_box{}
+.wrap .txtPW_box{margin-top:20px;}
+.wrap .txtPW_box img{position:absolute; right:15px; top:50%; width:20px; padding:5px; transform:translateY(-50%); cursor:pointer;}
+.wrap .check_box{text-align:left; margin-top:20px; font-size:14px;}
+.wrap .check_box #saveID{display:none; opacity:0;}
+.wrap .check_box label{position:relative; cursor:pointer;}
+.wrap .check_box label div{margin:0 0 0 39px;}
+.wrap .check_box label div:after{position:absolute; left:1px; top:50%; width:14px; height:14px; transform:translateY(-50%); border-radius:100%; content:''; background:#fff; transition:all 250ms ease-out;}
+.wrap .check_box label div:before{position:absolute; left:0; top:0; width:30px; height:16px; content:''; margin:0 6px 0 0; border-radius:8px; vertical-align:bottom; background:#939393;}
+.wrap .check_box #saveID:checked+label div:after{margin-left:13px;}
+.wrap .check_box #saveID:checked+label div:before{background:#271a6c;}
+.wrap .login {display:block; width:100%; height:40px; margin-top:20px; border-radius:20px; background:#fff; font-size:24px; line-height:40px; font-weight:500;}
+.wrap .login img{height:18px; margin:-5px 3px 0 0;}
+.wrap .sign_con {margin:30px 0 0 0; font-size:16px;}
+.wrap .sign_con a{margin:0 0 0 36px; color:#3fcbfc; text-decoration:none;}

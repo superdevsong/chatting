@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link href="/web/index.css" rel="stylesheet" type="text/css">
-    <title>Title</title>
-</head>
-<body>
-<h3 class="my_class">hello</h3>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>HYB CHAT</title>
+		<link href="https//fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+		<link type="text/css" rel="stylesheet" href="/web/css/index.css">
+		<link type="text/css" rel="stylesheet" href="/web/css/common.css">
+		<link type="text/css" rel="stylesheet" href="/web/css/reset.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="/web/js/common.js"></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="main">로그인</div>
+			<div class="txt_box txtID_box">
+				<input type="text" id="txtID" required="">
+				<label for="txtID">아이디</label>
+			</div>
+			<div class="txt_box txtPW_box">
+				<input type="password" id="txtPW" required="">
+				<label for="txtPW">비밀번호</label>
+				<img src="/web/img/icon_eye_01.png">
+			</div>
+			<div class="check_box idsave">
+				<input type="checkbox" id="saveID">
+				<label for="saveID">
+				<div>아이디 저장</div>
+				</label>
+			</div>
+			<a class="btns login">
+				<img src="/web/img/icon_01.svg">
+				로그인	
+			</a>
+			<div class="sign_con">계정이 없으십니까?<a class="sign" href="join.html">회원가입 하러가기</a></div>
+		</div>
+	</body>
 </html>
