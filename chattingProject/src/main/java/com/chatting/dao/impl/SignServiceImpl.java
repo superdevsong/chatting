@@ -32,8 +32,8 @@ public class SignServiceImpl implements SignService {
     public void signup(JSONObject jsonObject) {
         Connection conn = jdbcConnector.connect();
         try {
-            String sql = "insert into user(user_id, user_password, user_name, birth,user_email,phone_number,salt)" +
-                    " values(?, ?, ?, ?, ?, ?, ?)";
+            String sql = "insert into user(user_id, user_password, user_name, birth,user_email,phone_number,gender,salt)" +
+                    " values(?, ?, ?, ?, ?, ?, ?,?)";
             PreparedStatement pstmt = conn.prepareStatement(sql);
             System.out.println(sql);
             pstmt.setString(1,jsonObject.getString("user_id"));
@@ -44,7 +44,8 @@ public class SignServiceImpl implements SignService {
             pstmt.setDate(4, new Date(sdf.parse(jsonObject.getString("birth"),new ParsePosition(0)).getTime()));
             pstmt.setString(5,jsonObject.getString("user_email"));
             pstmt.setString(6,jsonObject.getString("phone_number"));
-            pstmt.setString(7,salt);
+            pstmt.setString(7,jsonObject.getString("gender"));
+            pstmt.setString(8,salt);
             pstmt.executeUpdate();
 
         } catch (SQLException e) {

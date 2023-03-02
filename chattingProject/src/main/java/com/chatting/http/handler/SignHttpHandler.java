@@ -18,7 +18,6 @@ public class SignHttpHandler implements HttpHandler {
     public void handle(HttpExchange exchange) throws IOException {
         // Initialize Response Body
         OutputStream respBody = exchange.getResponseBody();
-        System.out.println("Ddd");
 
         try {
             String path = exchange.getRequestURI().getPath();
@@ -29,6 +28,20 @@ public class SignHttpHandler implements HttpHandler {
                     String data = new String(bytes, StandardCharsets.UTF_8);
                     System.out.println(data);
                     signService.signup(new JSONObject(data));
+                } else if(method.equals("GET")) {
+                    byte[] file = getClass().getClassLoader().getResourceAsStream("static/web/join.html").readAllBytes();
+                    // Set Response Headers
+                    Headers headers = exchange.getResponseHeaders();
+                    headers.add("Content-Type", "text/html;charset=UTF-8");
+                    headers.add("Content-Length", String.valueOf(file.length));
+
+                    // Send Response Headers
+                    exchange.sendResponseHeaders(200, file.length);
+
+                    respBody.write(file);
+
+                    // Close Stream
+                    respBody.close();
                 }
             } else if(path.equals("/sign/login")){
 
@@ -37,7 +50,11 @@ public class SignHttpHandler implements HttpHandler {
             }
 
         } catch(Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
+
+            if( respBody != null ) {
+                respBody.close();
+            }
         } finally {
             exchange.close();
         }
