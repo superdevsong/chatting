@@ -22,10 +22,10 @@ $(function(){
 			var $this = $(this).children("img");
 			var input = $(this).children("input");
 			if(input.attr("type") == "password"){
-				$this.attr("src","img/icon_eye_02.png");
+				$this.attr("src","/web/img/icon_eye_02.png");
 				input.attr("type","text");
 			}else{
-				$this.attr("src","img/icon_eye_01.png");
+				$this.attr("src","/web/img/icon_eye_01.png");
 				input.attr("type","password");
 			}
 			
