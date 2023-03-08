@@ -33,5 +33,16 @@ $(function(){
     });
 });
 
-$(window).load(function(){
+window.addEventListener('DOMContentLoaded', function(){
+    const imgs = document.querySelectorAll('.txtPW_box img');
+    imgs.forEach(function(){
+        this.addEventListener('click',function(){
+            alert('hi');
+        });
+    });
+    // items.forEach(item => {
+    // item.addEventListener('click', e => {
+    //     item.classList.toggle('active')
+    // })
+    // })
 });
